@@ -21,7 +21,7 @@ class _ForgotScreen extends State<ForgotScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          "Forgotten Screen",
+          "Forgotten Screen ?",
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Color(0xff2E001F),
