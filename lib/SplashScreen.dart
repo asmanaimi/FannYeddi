@@ -45,7 +45,7 @@ class _SplashScreen extends State<SplashScreen>{
                   children: <Widget>[
                     CircularProgressIndicator(),
                     SizedBox(height: 20,),
-                    Text("Online store for everyone"
+                    Text("Online store for everyone !"
                       ,style: TextStyle(
                           fontStyle: FontStyle.italic
                           ,fontSize: 18
