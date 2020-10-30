@@ -81,7 +81,7 @@ class _ForgotScreen extends State<ForgotScreen> {
                           FirebaseAuth.instance
                               .sendPasswordResetEmail(email: email)
                               .then((value) => print("Check your mails"));
-                        }
+                        }//comment
                       },
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
