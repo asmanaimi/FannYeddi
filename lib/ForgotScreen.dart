@@ -1,7 +1,7 @@
 //import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+//import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:flutter/material.dart';
 
 class ForgotScreen extends StatefulWidget {
   @override
@@ -21,7 +21,7 @@ class _ForgotScreen extends State<ForgotScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
-          "Forgotten Screen",
+          "Forgotten Screen !",
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Color(0xff2E001F),
@@ -81,7 +81,7 @@ class _ForgotScreen extends State<ForgotScreen> {
                           FirebaseAuth.instance
                               .sendPasswordResetEmail(email: email)
                               .then((value) => print("Check your mails"));
-                        }
+                        }//comment
                       },
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
