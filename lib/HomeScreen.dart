@@ -10,6 +10,7 @@ import 'MyFavorite.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
+  
   String currentEmail;
 
   HomeScreen(this.currentEmail);
@@ -19,6 +20,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+ 
   String currentEmail;
   List<Data> dataList = [];
   List<bool> favList = [];
@@ -29,8 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> logOut() async {
     auth.signOut().then((value) {
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (BuildContext context) => LogInScreen()));
+      Navigator.pushReplacement(context,MaterialPageRoute(builder: (BuildContext context) => LogInScreen()));
     });
   }
 
@@ -83,10 +84,11 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     });
   }
-
+ 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+ 
+      return  Scaffold(
       backgroundColor: Color(0xffffffff),
       appBar: AppBar(
         backgroundColor: Color(0xff2E001F),
@@ -194,6 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+      
       body: dataList.length == 0
           ? Center(
               child: Text(
@@ -230,7 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
 
-    );
+      );
   }
 
   Widget CardUI(String imgUrl, String name, String material, String price,

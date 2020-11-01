@@ -8,13 +8,36 @@ import 'SignUpScreen.dart';
 class LogInScreen extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _LogInScreen();
   }
 
 }
 
 class _LogInScreen extends State<LogInScreen>{
+   Future<bool> _onBackPressed() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Are you sure?'),
+            content: Text('You are going to exit the application!!'),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('NO'),
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+              ),
+              FlatButton(
+                child: Text('YES'),
+                onPressed: () {
+                  Navigator.of(context).pop(true);
+                },
+              ),
+            ],
+          );
+        });
+}
   bool signInState = false;
   String email="",password="";
   var _formKey=GlobalKey<FormState>();
@@ -73,7 +96,9 @@ try {
   Widget build(BuildContext context) {
 
     // TODO: implement build
-    return Scaffold(
+    return WillPopScope(
+    onWillPop: _onBackPressed,
+    child: new Scaffold(
 
       backgroundColor: Colors.white,
       //change column to listview
@@ -330,6 +355,6 @@ try {
         ),
       ),
 
-    );
+     ), );
   }
 }

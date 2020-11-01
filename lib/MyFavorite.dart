@@ -5,11 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:sprint1/Data.dart';
 
 class MyFavorite extends StatefulWidget {
+
+  
   @override
   _MyFavoriteState createState() => _MyFavoriteState();
 }
 
 class _MyFavoriteState extends State<MyFavorite> {
+ 
+
 List<Data> dataList = [];
 FirebaseAuth auth = FirebaseAuth.instance;
   @override
@@ -19,6 +23,7 @@ FirebaseAuth auth = FirebaseAuth.instance;
     FavoriteFunc();
 
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +38,7 @@ FirebaseAuth auth = FirebaseAuth.instance;
               dataList[index].material, dataList[index].price,dataList[index].uploadid,index);
         }
     ),
-    );
+     );
   }
 
 Widget CardUI(String imgUrl, String name, String material, String price,String uploadId,int index) {

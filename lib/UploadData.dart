@@ -15,13 +15,15 @@ class UploadData extends StatefulWidget {
 }
 
 class _UploadDataState extends State<UploadData> {
+  
   File imageFile;
   var formKey = GlobalKey<FormState>();
   String name , material , price ;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return  Scaffold(
       backgroundColor: Colors.white,
+      
       appBar: AppBar(
         backgroundColor: Color(0xff2E001F),
         title: Text("Upload Data",style: TextStyle(color: Colors.white)),
@@ -217,7 +219,7 @@ class _UploadDataState extends State<UploadData> {
         ),
       ),
       ),
-    );
+      );
   }
 
   Future<void> _showDialog() {
@@ -281,5 +283,8 @@ class _UploadDataState extends State<UploadData> {
 
       databaseReference.child(uploadId).set(map);
     }
+ 
+
   }
+  
 }
