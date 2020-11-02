@@ -216,6 +216,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     dataList[index].uploadid,
                     index);
               }),
+              //curved
               bottomNavigationBar: CurvedNavigationBar(
         color: Color(0xff2E001F),
         backgroundColor: Colors.white,
