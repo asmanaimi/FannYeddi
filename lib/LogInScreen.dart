@@ -20,7 +20,7 @@ class _LogInScreen extends State<LogInScreen>{
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text('Are you sure?'),
-            content: Text('You are going to exit the application!!'),
+            content: Text('You are going to exit the application'),
             actions: <Widget>[
               FlatButton(
                 child: Text('NO'),
