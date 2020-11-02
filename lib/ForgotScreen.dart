@@ -88,7 +88,7 @@ class _ForgotScreen extends State<ForgotScreen> {
                       ),
                       color: Color(0xff2E001F),
                       child: Text(
-                        "Send Email",
+                        "Send Email ",
                         style: TextStyle(
                             color: Colors.blue,
                             fontWeight: FontWeight.bold,

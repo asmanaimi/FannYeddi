@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -215,22 +216,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     dataList[index].uploadid,
                     index);
               }),
-              bottomNavigationBar: new BottomAppBar(
+              bottomNavigationBar: CurvedNavigationBar(
         color: Color(0xff2E001F),
-        child: new Container(
-          child: new Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              new IconButton(icon: new Icon(Icons.home,color: Colors.white), onPressed: null),
-              new IconButton(icon: new Icon(Icons.search, color: Colors.white,), onPressed: null),
-              new IconButton(icon: new Icon(Icons.add_a_photo,color: Colors.white), onPressed: null),
-              new IconButton(icon: new Icon(Icons.local_grocery_store,color: Colors.white, ),onPressed: null),
-              new IconButton(icon: new Icon(Icons.person, color: Colors.white,), onPressed: null),
-              
-              ],
-          ),
-        ),
+        backgroundColor: Colors.white,
+        buttonBackgroundColor: Color(0xff2E001F),
+         items: <Widget>[
+           Icon(Icons.home, size: 30,color:Colors.white),
+           Icon(Icons.search,size: 30,color:Colors.white),
+      Icon(Icons.add, size: 30,color:Colors.white),
+      Icon(Icons.local_grocery_store, size: 30,color:Colors.white),
+      Icon(Icons.person, size: 30,color:Colors.white),
+    ],
+    animationDuration: Duration(milliseconds: 200),
+    onTap: (index) {
+      //Handle button tap
+    },
+        
       ),
 
       );
