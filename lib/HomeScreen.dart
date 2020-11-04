@@ -326,7 +326,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           FavoriteFunc();
                         });
                       });
-                    })
+                    }),
+                    IconButton(
+                      icon: Icon(Icons.mode_edit),
+                      onPressed: (){},
+                    )
+
           ],
         ),
       ),
