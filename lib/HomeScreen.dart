@@ -428,12 +428,7 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     });
   }
- /*Future<void> delete_Product(value){
-DatabaseReference _ProductRef = FirebaseDatabase.instance.reference().child("Data").child(value.uid);
-    _ProductRef.remove().then((_) {
-       print("Product deleted");
-    });
-  }*/
+
   void Delete_product(String uploadId, int index) {
     DatabaseReference _ProductRef = FirebaseDatabase.instance.reference();
   _ProductRef.reference().child("Data").child(uploadId).remove().then((_) {
