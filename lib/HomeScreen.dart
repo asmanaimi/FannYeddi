@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:collection';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -21,7 +23,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
- 
   String currentEmail;
   List<Data> dataList = [];
   List<bool> favList = [];
@@ -217,7 +218,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     index);
               }),
               //curved
-              bottomNavigationBar: CurvedNavigationBar(
+              bottomNavigationBar:CurvedNavigationBar(
         color: Color(0xff2E001F),
         backgroundColor: Colors.white,
         buttonBackgroundColor: Color(0xff2E001F),
@@ -325,8 +326,40 @@ class _HomeScreenState extends State<HomeScreen> {
                         setState(() {
                           FavoriteFunc();
                         });
+
                       });
+                    }),
+                    IconButton(
+                      icon: Icon(
+                      Icons.delete,
+                      color: Color(0xff2E001F),
+                      textDirection: TextDirection.rtl,
+                    ), onPressed: (){
+           return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Are you sure?'),
+            content: Text('You are going to delete this product'),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('NO'),
+                onPressed: () {
+                  
+                },
+              ),
+              FlatButton(
+                child: Text('YES'),
+                onPressed:() {
+                 Delete_product(uploadId,index);
+                },
+              ),
+            ],
+          );
+        });
+
                     })
+      
           ],
         ),
       ),
@@ -395,4 +428,19 @@ class _HomeScreenState extends State<HomeScreen> {
       });
     });
   }
+ /*Future<void> delete_Product(value){
+DatabaseReference _ProductRef = FirebaseDatabase.instance.reference().child("Data").child(value.uid);
+    _ProductRef.remove().then((_) {
+       print("Product deleted");
+    });
+  }*/
+  void Delete_product(String uploadId, int index) {
+    DatabaseReference _ProductRef = FirebaseDatabase.instance.reference();
+  _ProductRef.reference().child("Data").child(uploadId).remove().then((_) {
+    print("Delete $uploadId successful");
+    setState(() {
+      dataList.removeAt(index);
+    });
+  });
+}
 }

@@ -280,11 +280,10 @@ class _UploadDataState extends State<UploadData> {
       map ["material"] = material;
       map ["price"] = price;
       map ["imgUrl"] = url;
-
       databaseReference.child(uploadId).set(map);
     }
+  }
+ 
+  }
  
 
-  }
-  
-}
