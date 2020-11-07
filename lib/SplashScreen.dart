@@ -18,48 +18,10 @@ class _SplashScreen extends State<SplashScreen> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      backgroundColor: Color(0xff2E001F),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-                flex: 2,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    MyImage(),
-                    Text(
-                      "Scarves Store",
-                      style: TextStyle(
-                          fontSize: 35,
-                          fontStyle: FontStyle.italic,
-                          color: Color(0xff2E001F)),
-                    )
-                  ],
-                )),
-            Expanded(
-                flex: 1,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    CircularProgressIndicator(),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "Online store for everyone !",
-                      style: TextStyle(
-                          fontStyle: FontStyle.italic,
-                          fontSize: 18,
-                          color: Color(0xffffffff)),
-                    )
-                  ],
-                )),
-          ],
-        ),
-      ),
-    );
+        backgroundColor: Color(0xff2E001F),
+        body: Center(
+        //  child: Image.asset('images/logo.png'),
+        ));
   }
 
   FirebaseAuth auth = FirebaseAuth.instance;
@@ -89,18 +51,3 @@ class _SplashScreen extends State<SplashScreen> {
   }
 }
 
-class MyImage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    AssetImage assetImage = AssetImage("images/logo.png");
-    /* Image logo = new Image(
-      image: image,
-      width: 50,
-      height: 50,
-    );*/
-    Image image = Image(image: assetImage);
-    return Container(
-      child: image,
-    );
-  }
-}

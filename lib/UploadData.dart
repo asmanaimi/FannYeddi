@@ -266,6 +266,7 @@ class _UploadDataState extends State<UploadData> {
           FirebaseDatabase.instance.reference().child("Data");
       String uploadId = databaseReference.push().key;
       HashMap map = new HashMap();
+
       map["name"] = name;
       map["material"] = material;
       map["price"] = price;

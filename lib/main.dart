@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'SplashScreen.dart';
+import 'LogInScreen.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget{
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget{
     return new MaterialApp(
       //remove banner from app
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: LogInScreen(),
     );
   }
 
