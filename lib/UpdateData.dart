@@ -17,15 +17,21 @@ class MyUpdatePage extends StatefulWidget {
 
 class _MyUpdatePageState extends State<MyUpdatePage> {
   String productImage;
-  TextEditingController recipeInputController;
+ TextEditingController descriptionInputController;
   TextEditingController nameInputController;
   TextEditingController imageInputController;
+  TextEditingController prixInputController;
+  TextEditingController quantiteInputController;
+
+
 
   String id;
   final db = Firestore.instance;
   final _formKey = GlobalKey<FormState>();
   String name;
-  String materials;
+  String prix;
+  String description;
+  String quantite;
 
   pickerCam() async {
     File img = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -56,11 +62,17 @@ class _MyUpdatePageState extends State<MyUpdatePage> {
   @override
   void initState() {
     super.initState();
-    recipeInputController =
-        new TextEditingController(text: widget.ds.data["materials"]);
+   
+        prixInputController =
+        new TextEditingController(text: widget.ds.data["prix"]);
     nameInputController =
         new TextEditingController(text: widget.ds.data["name"]);
     productImage = widget.ds.data["image"]; //nuevo
+     descriptionInputController =
+        new TextEditingController(text: widget.ds.data["description"]);
+          quantiteInputController =
+        new TextEditingController(text: widget.ds.data["quantite"]);
+
     print(productImage); //nuevo
   }
 
@@ -135,9 +147,11 @@ class _MyUpdatePageState extends State<MyUpdatePage> {
                         icon: new Icon(Icons.image), onPressed: pickerGallery),
                   ],
                 ),
+                
                 Container(
                   child: TextFormField(
                     controller: nameInputController,
+                    maxLines: 10,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'name',
@@ -146,30 +160,61 @@ class _MyUpdatePageState extends State<MyUpdatePage> {
                     ),
                     validator: (value) {
                       if (value.isEmpty) {
-                        return 'Please enter some text';
+                        return 'Please enter new name';
                       }
                     },
                     onSaved: (value) => name = value,
                   ),
                 ),
-                Container(
+                 Container(
                   child: TextFormField(
-                    controller: recipeInputController,
                     maxLines: 10,
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'materials',
+                      hintText: 'description',
                       fillColor: Colors.grey[300],
                       filled: true,
                     ),
-                    validator: (value) {
+                     validator: (value) {
                       if (value.isEmpty) {
-                        return 'Please enter some recipe';
+                        return 'Please enter a  description ';
                       }
                     },
-                    onSaved: (value) => materials = value,
+                    onSaved: (value) => description = value,                    
                   ),
-                )
+                ),
+                Container(
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'prix',
+                      fillColor: Colors.grey[300],
+                      filled: true,
+                    ),
+                     validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter price of product';
+                      }
+                    },
+                    onSaved: (value) => prix = value,                    
+                  ),
+                ),
+                Container(
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'quantite',
+                      fillColor: Colors.grey[300],
+                      filled: true,
+                    ),
+                     validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter quantity of product';
+                      }
+                    },
+                    onSaved: (value) => quantite = value,                    
+                  ),
+                ),
               ],
             ),
           ),
@@ -199,7 +244,9 @@ class _MyUpdatePageState extends State<MyUpdatePage> {
                       .document(widget.ds.documentID)
                       .updateData({
                     'name': nameInputController.text,
-                    'materials': recipeInputController.text,
+                    'quantite': quantiteInputController.text,
+                     'prix': prixInputController.text,
+                      'description': descriptionInputController.text,
                     'image': '$fullPathImage'
                   });
                   Navigator.of(context).pop(); //regrese a la pantalla anterior

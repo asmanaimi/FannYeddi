@@ -16,7 +16,7 @@ class UploadData extends StatefulWidget {
 class _UploadDataState extends State<UploadData> {
   File imageFile;
   var formKey = GlobalKey<FormState>();
-  String name, material, price;
+  String name, material, price,quantite,description;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -152,6 +152,84 @@ class _UploadDataState extends State<UploadData> {
                         style: TextStyle(color: Colors.black),
                         decoration: InputDecoration(
                             labelText: "Price",
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                    color: Color(0xff2E001F), width: 1)),
+                            disabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                    color: Color(0xff2E001F), width: 1)),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                    color: Color(0xff2E001F), width: 1)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                    color: Color(0xff2E001F), width: 1))),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Theme(
+                      data: ThemeData(
+                        hintColor: Colors.blue,
+                      ),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return "Please write a few description ";
+                          } else {
+                            description= value;
+                          }
+                        },
+                        style: TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                            labelText: "Description",
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                    color: Color(0xff2E001F), width: 1)),
+                            disabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                    color: Color(0xff2E001F), width: 1)),
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                    color: Color(0xff2E001F), width: 1)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: BorderSide(
+                                    color: Color(0xff2E001F), width: 1))),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Theme(
+                      data: ThemeData(
+                        hintColor: Colors.blue,
+                      ),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return "Please write the quantity of production";
+                          } else {
+                            quantite = value;
+                          }
+                        },
+                        style: TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                            labelText: "quantity",
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15),
                                 borderSide: BorderSide(

@@ -35,7 +35,7 @@ FirebaseAuth auth = FirebaseAuth.instance;
         itemCount: dataList.length,
         itemBuilder: (_, index) {
           return CardUI(dataList[index].imgUrl, dataList[index].name,
-              dataList[index].material, dataList[index].price,dataList[index].uploadid,index);
+              dataList[index].material, dataList[index].prix,dataList[index].uploadid,index);
         }
     ),
      );
@@ -101,6 +101,8 @@ Widget CardUI(String imgUrl, String name, String material, String price,String u
             values [key]['name'],
             values [key]['material'],
             values [key]['price'],
+            values [key]['quantite'],
+            values [key]['description'],
             key
           //key is the uploadid
         );

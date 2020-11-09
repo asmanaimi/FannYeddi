@@ -13,10 +13,12 @@ class _MyInfoPageState extends State<MyInfoPage> {
   String productImage;
   String id;
   String name;
-  String recipe;
+ String prix,quantite,description;
 
   TextEditingController nameInputController;
-  TextEditingController recipeInputController;
+  TextEditingController descriptionInputController;
+  TextEditingController prixInputController;
+  TextEditingController quantiteInputController;
 
   Future getPost() async {
     var firestore = Firestore.instance;
@@ -27,12 +29,19 @@ class _MyInfoPageState extends State<MyInfoPage> {
    @override
   void initState() {
     super.initState();
-    recipeInputController =
-        new TextEditingController(text: widget.ds.data["recipes"]);
-    nameInputController =
-        new TextEditingController(text: widget.ds.data["name"]);
+    
     productImage = widget.ds.data["image"];
     print(productImage);
+       prixInputController =
+        new TextEditingController(text: widget.ds.data["prix"]);
+    nameInputController =
+        new TextEditingController(text: widget.ds.data["name"]);
+    //nuevo
+     descriptionInputController =
+        new TextEditingController(text: widget.ds.data["description"]);
+          quantiteInputController =
+        new TextEditingController(text: widget.ds.data["quantite"]);
+
   }
 
 
@@ -43,7 +52,7 @@ class _MyInfoPageState extends State<MyInfoPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff2E001F),
-        title: Text('Information Page'),
+        title: Text('Information Product'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
@@ -84,18 +93,47 @@ class _MyInfoPageState extends State<MyInfoPage> {
                   leading: const Icon(Icons.list, color: Colors.black),
                   title: new TextFormField(
                     maxLines: 10,
-                    controller: recipeInputController,
+                    controller: descriptionInputController,
                     validator: (value) {
                       if (value.isEmpty) return "Ingresa un nombre";
                     },
                     decoration: new InputDecoration(
-                        hintText: "recipe", labelText: "recipe"),
+                        hintText: "description", labelText: "description"),
+                  ),
+                ),
+                 Padding(
+                  padding: EdgeInsets.only(top: 8.0),
+                ),
+                new ListTile(
+                  leading: const Icon(Icons.list, color: Colors.black),
+                  title: new TextFormField(
+                    maxLines: 10,
+                    controller: prixInputController,
+                    validator: (value) {
+                      if (value.isEmpty) return "Ingresa un nombre";
+                    },
+                    decoration: new InputDecoration(
+                        hintText: "prix", labelText: "prix"),
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 8.0),
                 ),
-                
+                Padding(
+                  padding: EdgeInsets.only(top: 8.0),
+                ),
+                new ListTile(
+                  leading: const Icon(Icons.list, color: Colors.black),
+                  title: new TextFormField(
+                    maxLines: 10,
+                    controller: quantiteInputController,
+                    validator: (value) {
+                      if (value.isEmpty) return "Ingresa un nombre";
+                    },
+                    decoration: new InputDecoration(
+                        hintText: "quantite", labelText: "quantite"),
+                  ),
+                ), 
               ],
             ),
           ),

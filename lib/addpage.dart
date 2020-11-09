@@ -21,15 +21,17 @@ class MyAddPage extends StatefulWidget {
 }
 
 class _MyAddPageState extends State<MyAddPage> {
-  TextEditingController recipeInputController;
+  TextEditingController descriptionInputController;
   TextEditingController nameInputController;
   TextEditingController imageInputController;
+  TextEditingController prixInputController;
+  TextEditingController quantiteInputController;
 
   String id;
   final db = Firestore.instance;
   final _formKey = GlobalKey<FormState>();
   String name;
-  String materials;
+  String prix,quantite,description;
 
   pickerCam() async {
     File img = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -76,7 +78,7 @@ class _MyAddPageState extends State<MyAddPage> {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
       DocumentReference ref = await db.collection('products').add(
-          {'name': '$name', 'materials': '$materials', 'image': '$fullPathImage'});
+          {'name': '$name', 'description': '$description', 'quantite': '$quantite','prix': '$prix','image': '$fullPathImage'});
       setState(() => id = ref.documentID);
       Navigator.of(context).pop(); //regrese a la pantalla anterior
     }
@@ -128,7 +130,7 @@ class _MyAddPageState extends State<MyAddPage> {
                     ),
                      validator: (value) {
                       if (value.isEmpty) {
-                        return 'Please enter some text';
+                        return 'Please enter the name of product';
                       }
                     },
                     onSaved: (value) => name = value,                    
@@ -139,18 +141,50 @@ class _MyAddPageState extends State<MyAddPage> {
                     maxLines: 10,
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: 'Materials',
+                      hintText: 'description',
                       fillColor: Colors.grey[300],
                       filled: true,
                     ),
                      validator: (value) {
                       if (value.isEmpty) {
-                        return 'Please add some products';
+                        return 'Please enter a few description ';
                       }
                     },
-                    onSaved: (value) => materials = value,                    
+                    onSaved: (value) => description = value,                    
                   ),
-                )
+                ),
+                Container(
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'prix',
+                      fillColor: Colors.grey[300],
+                      filled: true,
+                    ),
+                     validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter price of product';
+                      }
+                    },
+                    onSaved: (value) => prix = value,                    
+                  ),
+                ),
+                Container(
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'quantite',
+                      fillColor: Colors.grey[300],
+                      filled: true,
+                    ),
+                     validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter quantity of product';
+                      }
+                    },
+                    onSaved: (value) => quantite = value,                    
+                  ),
+                ),
               ],
             ),
           ),

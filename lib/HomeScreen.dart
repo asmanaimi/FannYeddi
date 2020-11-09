@@ -25,13 +25,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-   TextEditingController recipeInputController;
+  TextEditingController descriptionInputController;
   TextEditingController nameInputController;
+  TextEditingController prixInputController;
+  TextEditingController quantiteInputController;
   String id;
   final db = Firestore.instance;
   //final _formKey = GlobalKey<FormState>();
   String name;
-  String recipe;
+  String prix,quantite,description;
 
   //create function for delete one register
    void deleteData(DocumentSnapshot doc) async {
@@ -300,10 +302,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           subtitle: Text(
-                            doc.data["materials"],
+                            doc.data["description"],
                             style: TextStyle(
                                 color: Colors.redAccent, fontSize: 12.0),
                           ),
+                          
+                          
                            onTap: () => navigateToDetail(doc),
                         ),
                       ),
